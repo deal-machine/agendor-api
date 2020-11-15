@@ -27,7 +27,7 @@ async function getOrganizationPeople(organization_id) {
   }
 }
 
-async function createPerson(person = '') {
+async function createPerson(person) {
   try {
     const createPerson = await peopleClass.createPerson(person)
     console.log(createPerson)

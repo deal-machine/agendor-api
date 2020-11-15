@@ -69,11 +69,18 @@ async function updateDeal(id, deal) {
 
 async function updateDealStatus(id, dealStatus) {
   try {
+
+    if (dealStatus.dealStatusText !== "ongoing"
+      && dealStatus.dealStatusText !== "won"
+      && dealStatus.dealStatusText !== "lost") {
+      throw new Error(`Status must be "ongoing" "won" "lost".`)
+    }
+
     const updateStatus = await deals.updateDealStatus(id, dealStatus)
     console.log(updateStatus)
   }
   catch (err) {
-    console.error({ "Error": err.message })
+    console.error(err.message)
   }
 }
 
@@ -99,6 +106,6 @@ async function updateDealStage(id, dealStage) {
 //updateDeal('10756436', { description: name.jobDescriptor() })
 
 //dealStatusText = Enum: "ongoing" "won" "lost"
-//updateDealStatus('10756436', { dealStatusText: "won" })
+//updateDealStatus('10756436', { dealStatusText: "ongoing" })
 
 //updateDealStage('10756436', { dealStage: 3 })

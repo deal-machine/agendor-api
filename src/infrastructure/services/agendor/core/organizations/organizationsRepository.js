@@ -5,11 +5,11 @@ const axios = require('axios');
 const { name } = require('faker')
 
 const Organization = require('./Organization.js');
-const organization = new Organization(axios);
+const organizationClass = new Organization(axios);
 
 async function getOrganizations(id = '') {
   try {
-    const organizations = await organization.getOrganizations(id)
+    const organizations = await organizationClass.getOrganizations(id)
     console.log(organizations)
   }
   catch (err) {
@@ -19,7 +19,7 @@ async function getOrganizations(id = '') {
 
 async function createOrganization(organization) {
   try {
-    const createOrganization = await organization.createOrganization(organization)
+    const createOrganization = await organizationClass.createOrganization(organization)
     console.log(createOrganization)
   }
   catch (err) {
@@ -29,7 +29,7 @@ async function createOrganization(organization) {
 
 async function upsertOrganization(organization) {
   try {
-    const upsertOrganization = await organization.upsertOrganization()
+    const upsertOrganization = await organizationClass.upsertOrganization(organization)
     console.log(upsertOrganization)
   }
   catch (err) {
@@ -39,7 +39,7 @@ async function upsertOrganization(organization) {
 
 async function updateOrganization(id, organization) {
   try {
-    const updateOrganization = await organization.updateOrganization()
+    const updateOrganization = await organizationClass.updateOrganization(id, organization)
     console.log(updateOrganization)
   }
   catch (err) {
@@ -49,7 +49,7 @@ async function updateOrganization(id, organization) {
 
 async function deleteOrganization(id) {
   try {
-    const deleteOrganization = await organization.deleteOrganization()
+    const deleteOrganization = await organization.deleteOrganization(id)
     console.log(deleteOrganization)
   }
   catch (err) {
@@ -57,12 +57,12 @@ async function deleteOrganization(id) {
   }
 }
 
-getOrganizations('23516829')
+//getOrganizations('23516829')
 
-createOrganization({ name: name.firstName() })
+//createOrganization({ name: name.firstName })
 
-upsertOrganization({ name: "Abby", legalName: name.lastName() })
+//upsertOrganization({ name: "Abby", legalName: name.lastName() })
 
-updateOrganization('23516829', { legalName: name.lastName() })
+//updateOrganization('23516829', { legalName: name.lastName() })
 
-deleteOrganization('23516829')
+//deleteOrganization('23516829')
