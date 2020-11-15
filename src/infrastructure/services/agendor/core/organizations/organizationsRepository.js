@@ -7,29 +7,62 @@ const { name } = require('faker')
 const Organization = require('./Organization.js');
 const organization = new Organization(axios);
 
-
-(async () => {
+async function getOrganizations(id = '') {
   try {
-    //list all organizations
-    const organizations = await organization.getOrganizations('')
-
-    //list an organization by id parameter
-    const organizationById = await organization.getOrganizations('23516829')
-
-    //create organization
-    const createOrganization = await organization.createOrganization({ name: name.firstName() })
-
-    //upsert organization
-    const upsertOrganization = await organization.upsertOrganization({ name: "Abby", legalName: name.lastName() })
-
-    //update organization
-    const updateOrganization = await organization.updateOrganization('23516829', { legalName: name.lastName() })
-
-    //delete organization
-    const deleteOrganization = await organization.deleteOrganization('23516829')
-
+    const organizations = await organization.getOrganizations(id)
+    console.log(organizations)
   }
   catch (err) {
     console.error({ "Error": err.message })
   }
-})()
+}
+
+async function createOrganization(organization) {
+  try {
+    const createOrganization = await organization.createOrganization(organization)
+    console.log(createOrganization)
+  }
+  catch (err) {
+    console.error({ "Error": err.message })
+  }
+}
+
+async function upsertOrganization(organization) {
+  try {
+    const upsertOrganization = await organization.upsertOrganization()
+    console.log(upsertOrganization)
+  }
+  catch (err) {
+    console.error({ "Error": err.message })
+  }
+}
+
+async function updateOrganization(id, organization) {
+  try {
+    const updateOrganization = await organization.updateOrganization()
+    console.log(updateOrganization)
+  }
+  catch (err) {
+    console.error({ "Error": err.message })
+  }
+}
+
+async function deleteOrganization(id) {
+  try {
+    const deleteOrganization = await organization.deleteOrganization()
+    console.log(deleteOrganization)
+  }
+  catch (err) {
+    console.error({ "Error": err.message })
+  }
+}
+
+getOrganizations('23516829')
+
+createOrganization({ name: name.firstName() })
+
+upsertOrganization({ name: "Abby", legalName: name.lastName() })
+
+updateOrganization('23516829', { legalName: name.lastName() })
+
+deleteOrganization('23516829')

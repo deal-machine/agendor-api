@@ -17,6 +17,16 @@ async function getPeople(id = '') {
   }
 }
 
+async function getOrganizationPeople(organization_id) {
+  try {
+    const organizationPeople = await peopleClass.listPeopleByOrganization(organization_id)
+    console.log(organizationPeople)
+  }
+  catch (erro) {
+    console.error({ "Error": err.message })
+  }
+}
+
 async function createPerson(person = '') {
   try {
     const createPerson = await peopleClass.createPerson(person)
@@ -57,7 +67,10 @@ async function updatePerson(id, person) {
   }
 }
 
+
 getPeople('33623986')
+
+getOrganizationPeople('23243205')
 
 createPerson({ name: name.firstName() })
 

@@ -9,7 +9,7 @@ module.exports = class User {
     this._httpClient = _httpClient
   }
 
-  async getUser(user) {
+  async getUsers(user) {
     const { data } = await this._httpClient.get(`${url}/users/${user}`, config)
     return data.data;
   }

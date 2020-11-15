@@ -13,6 +13,10 @@ module.exports = class Person {
     const { data } = await this._httpClient.get(`${url}/people/${id}`, config)
     return data;
   }
+  async listPeopleByOrganization(organization_id) {
+    const { data } = await this._httpClient.get(`${url}/organizations/${organization_id}/people`, config)
+    return data
+  }
 
   async createPerson(person) {
     const { data } = await this._httpClient.post(`${url}/people`, person, config)
