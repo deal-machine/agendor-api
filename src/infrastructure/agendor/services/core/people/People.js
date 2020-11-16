@@ -9,32 +9,63 @@ module.exports = class Person {
     this._httpClient = _httpClient
   }
 
-  async getPeople(id) {
-    const { data } = await this._httpClient.get(`${url}/people/${id}`, config)
-    return data;
+  async getPeople(id = '') {
+    try {
+      const { data } = await this._httpClient.get(`${url}/people/${id}`, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
+
   async listPeopleByOrganization(organization_id) {
-    const { data } = await this._httpClient.get(`${url}/organizations/${organization_id}/people`, config)
-    return data
+    try {
+      const { data } = await this._httpClient.get(`${url}/organizations/${organization_id}/people`, config)
+      return data
+    }
+    catch (erro) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async createPerson(person) {
-    const { data } = await this._httpClient.post(`${url}/people`, person, config)
-    return data;
+    try {
+      const { data } = await this._httpClient.post(`${url}/people`, person, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async upsertPerson(email) {
-    const { data } = await this._httpClient.post(`${url}/people/upsert`, email, config)
-    return data
+    try {
+      const { data } = await this._httpClient.post(`${url}/people/upsert`, email, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async updatePerson(id, person) {
-    const { data } = await this._httpClient.put(`${url}/people/${id}`, person, config)
-    return data
+    try {
+      const { data } = await this._httpClient.put(`${url}/people/${id}`, person, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async deletePerson(id) {
-    const { status } = await this._httpClient.delete(`${url}/people/${id}`, config)
-    return status
+    try {
+      const { data } = await this._httpClient.delete(`${url}/people/${id}`, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 }
