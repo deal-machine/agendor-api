@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-const { name } = require('faker')
+//const { name } = require('faker')
 
 const Organization = require('./Organization.js');
 const organizationClass = new Organization(axios);
@@ -10,7 +10,7 @@ const organizationClass = new Organization(axios);
 async function getOrganizations(id = '') {
   try {
     const organizations = await organizationClass.getOrganizations(id)
-    console.log(organizations)
+    return organizations
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -19,8 +19,8 @@ async function getOrganizations(id = '') {
 
 async function createOrganization(organization) {
   try {
-    const createOrganization = await organizationClass.createOrganization(organization)
-    console.log(createOrganization)
+    const createdOrganization = await organizationClass.createOrganization(organization)
+    return createdOrganization
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -29,8 +29,8 @@ async function createOrganization(organization) {
 
 async function upsertOrganization(organization) {
   try {
-    const upsertOrganization = await organizationClass.upsertOrganization(organization)
-    console.log(upsertOrganization)
+    const upsertedOrganization = await organizationClass.upsertOrganization(organization)
+    return upsertedOrganization
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -39,8 +39,8 @@ async function upsertOrganization(organization) {
 
 async function updateOrganization(id, organization) {
   try {
-    const updateOrganization = await organizationClass.updateOrganization(id, organization)
-    console.log(updateOrganization)
+    const updatedOrganization = await organizationClass.updateOrganization(id, organization)
+    return updatedOrganization
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -49,20 +49,30 @@ async function updateOrganization(id, organization) {
 
 async function deleteOrganization(id) {
   try {
-    const deleteOrganization = await organization.deleteOrganization(id)
-    console.log(deleteOrganization)
+    const deletedOrganization = await organization.deleteOrganization(id)
+    return deletedOrganization
   }
   catch (err) {
     console.error({ "Error": err.message })
   }
 }
 
-//getOrganizations('23516829')
+module.exports = {
+  getOrganizations,
+  createOrganization,
+  upsertOrganization,
+  updateOrganization,
+  deleteOrganization
+}
 
-//createOrganization({ name: name.firstName })
+/*
+getOrganizations('23516829')
 
-//upsertOrganization({ name: "Abby", legalName: name.lastName() })
+createOrganization({ name: name.firstName })
 
-//updateOrganization('23516829', { legalName: name.lastName() })
+upsertOrganization({ name: "Abby", legalName: name.lastName() })
 
-//deleteOrganization('23516829')
+updateOrganization('23516829', { legalName: name.lastName() })
+
+deleteOrganization('23516829')
+*/

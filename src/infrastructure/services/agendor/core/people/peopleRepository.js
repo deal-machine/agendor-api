@@ -2,7 +2,7 @@
 
 const axios = require('axios')
 
-const { name, internet, company } = require('faker')
+//const { name, internet, company } = require('faker')
 
 const People = require('./People')
 const peopleClass = new People(axios)
@@ -10,7 +10,7 @@ const peopleClass = new People(axios)
 async function getPeople(id = '') {
   try {
     const people = await peopleClass.getPeople(id)
-    console.log(people)
+    return people
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -20,7 +20,7 @@ async function getPeople(id = '') {
 async function getOrganizationPeople(organization_id) {
   try {
     const organizationPeople = await peopleClass.listPeopleByOrganization(organization_id)
-    console.log(organizationPeople)
+    return organizationPeople
   }
   catch (erro) {
     console.error({ "Error": err.message })
@@ -29,8 +29,8 @@ async function getOrganizationPeople(organization_id) {
 
 async function createPerson(person) {
   try {
-    const createPerson = await peopleClass.createPerson(person)
-    console.log(createPerson)
+    const createdPerson = await peopleClass.createPerson(person)
+    return createdPerson
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -39,8 +39,8 @@ async function createPerson(person) {
 
 async function deletePerson(id) {
   try {
-    const deletePerson = await peopleClass.deletePerson(id)
-    console.log(deletePerson)
+    const deletedPerson = await peopleClass.deletePerson(id)
+    return deletedPerson
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -49,8 +49,8 @@ async function deletePerson(id) {
 
 async function upsertPerson(email) {
   try {
-    const upsertPerson = await peopleClass.upsertPerson(email)
-    console.log(upsertPerson)
+    const upsertedPerson = await peopleClass.upsertPerson(email)
+    return upsertedPerson
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -59,15 +59,24 @@ async function upsertPerson(email) {
 
 async function updatePerson(id, person) {
   try {
-    const updatePerson = await peopleClass.updatePerson(id, person)
-    console.log(updatePerson)
+    const updatedPerson = await peopleClass.updatePerson(id, person)
+    return updatedPerson
   }
   catch (err) {
     console.error({ "Error": err.message })
   }
 }
 
+module.exports = {
+  getPeople,
+  getOrganizationPeople,
+  createPerson,
+  deletePerson,
+  upsertPerson,
+  updatePerson
+}
 
+/*
 getPeople('33623986')
 
 getOrganizationPeople('23243205')
@@ -84,4 +93,4 @@ upsertPerson({
   contact: {
     email: 'Clement97@gmail.com'
   }
-})
+})*/

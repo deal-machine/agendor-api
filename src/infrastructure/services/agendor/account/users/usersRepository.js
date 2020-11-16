@@ -26,6 +26,6 @@ async function updateUser(id, user) {
   }
 }
 //getUsers('me')
-updateUser('576723', { contact: { linkedIn: "in/bárbara-moreira-siqueira-07a26597/" } })
+//updateUser('576723', { contact: { linkedIn: "in/bárbara-moreira-siqueira-07a26597/" } })
 
 module.exports = { getUsers, updateUser }
