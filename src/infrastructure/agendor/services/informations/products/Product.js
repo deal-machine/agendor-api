@@ -10,17 +10,33 @@ module.exports = class Product {
   }
 
   async getProducts() {
-    const { data } = await this._httpClient.get(`${url}/products`, config)
-    return data
+    try {
+      const { data } = await this._httpClient.get(`${url}/products`, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async createProduct(product) {
-    const { data } = await this._httpClient.post(`${url}/products`, product, config)
-    return data
+    try {
+      const { data } = await this._httpClient.post(`${url}/products`, product, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async deleteProduct(id) {
-    const { data } = await this._httpClient.delete(`${url}/products/${id}`, config)
-    return data
+    try {
+      const { data } = await this._httpClient.delete(`${url}/products/${id}`, config)
+      return data
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
+
   }
 }
