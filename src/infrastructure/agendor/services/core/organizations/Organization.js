@@ -9,29 +9,53 @@ module.exports = class Organization {
     this._httpClient = _httpClient
   }
 
-  async getOrganizations(organization) {
-    const { data } = await this._httpClient.get(`${url}/organizations/${organization}`, config)
-    return data;
+  async getOrganizations(organization = '') {
+    try {
+      const { data } = await this._httpClient.get(`${url}/organizations/${organization}`, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async createOrganization(organization) {
-    const { data } = await this._httpClient.post(`${url}/organizations`, organization, config)
-    return data;
+    try {
+      const { data } = await this._httpClient.post(`${url}/organizations`, organization, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async upsertOrganization(organization) {
-    const { data } = await this._httpClient.post(`${url}/organizations/upsert`, organization, config)
-    return data;
+    try {
+      const { data } = await this._httpClient.post(`${url}/organizations/upsert`, organization, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async updateOrganization(id, organization) {
-    const { data } = await this._httpClient.put(`${url}/organizations/${id}`, organization, config)
-    return data;
+    try {
+      const { data } = await this._httpClient.put(`${url}/organizations/${id}`, organization, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
 
   async deleteOrganization(id) {
-    const { status } = await this._httpClient.delete(`${url}/organizations/${id}`, config)
-    return status;
+    try {
+      const { data } = await this._httpClient.delete(`${url}/organizations/${id}`, config)
+      return data;
+    }
+    catch (err) {
+      console.error({ "Error": err.message })
+    }
   }
-
 }
