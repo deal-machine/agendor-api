@@ -27,7 +27,7 @@ async function getDealsOfPerson(person_id) {
   }
 }
 
-async function getDealsofOrganization(organization_id) {
+async function getDealsOfOrganization(organization_id) {
   try {
     const dealsOrganization = await deals.getDealsOfOrganizations(organization_id)
     return dealsOrganization
