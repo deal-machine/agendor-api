@@ -28,7 +28,7 @@ async function getStates() {
 async function getCitiesInState(state) {
   try {
 
-    const newState = upperCaseState(state)
+    const newState = setUpperCaseState(state)
 
     const states = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
 
@@ -37,7 +37,7 @@ async function getCitiesInState(state) {
     })
 
     if (correctState.length === 0) {
-      throw new Error(`${newState} is not a valid state.`)
+      throw new Error(`${newState} not exists.`)
     }
     else {
       const cities = await information.getCities(newState)
@@ -109,7 +109,7 @@ async function getSectors() {
   }
 }
 //Set state upper case
-function upperCaseState(word) {
+function setUpperCaseState(word) {
   if (word.split(' ').length > 1) {
     const array = word.split(' ')
     const state = `${array[0].substr(0, 1).toUpperCase()}${array[1].substr(0, 1).toUpperCase()}`
