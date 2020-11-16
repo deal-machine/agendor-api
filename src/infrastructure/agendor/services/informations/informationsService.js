@@ -108,6 +108,7 @@ async function getSectors() {
     console.error({ "Error": err.message })
   }
 }
+
 //Set state upper case
 function setUpperCaseState(word) {
   if (word.split(' ').length > 1) {
