@@ -8,7 +8,7 @@ const information = new Information(axios)
 async function getCategories() {
   try {
     const categories = await information.getCategories()
-    console.log(categories)
+    return categories
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -18,7 +18,7 @@ async function getCategories() {
 async function getStates() {
   try {
     const states = await information.getStates()
-    console.log(states)
+    return states
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -41,7 +41,7 @@ async function getCitiesInState(state) {
     }
     else {
       const cities = await information.getCities(newState)
-      console.log(cities)
+      return cities
     }
   }
   catch (err) {
@@ -52,7 +52,7 @@ async function getCitiesInState(state) {
 async function getDealStages() {
   try {
     const stages = await information.getDealStages()
-    console.log(stages)
+    return stages
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -62,7 +62,7 @@ async function getDealStages() {
 async function getDealStatuses() {
   try {
     const statuses = await information.getDealStatuses()
-    console.log(statuses)
+    return statuses
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -72,7 +72,7 @@ async function getDealStatuses() {
 async function getLeadOrigins() {
   try {
     const leadOrigins = await information.getLeadOrigins()
-    console.log(leadOrigins)
+    return leadOrigins
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -82,7 +82,7 @@ async function getLeadOrigins() {
 async function getLossReasons() {
   try {
     const lossReasons = await information.getLossReasons()
-    console.log(lossReasons)
+    return lossReasons
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -92,7 +92,7 @@ async function getLossReasons() {
 async function getMetrics() {
   try {
     const metrics = await information.getMetrics()
-    console.log(metrics)
+    return metrics
   }
   catch (err) {
     console.error({ "Error": err.message })
@@ -102,13 +102,12 @@ async function getMetrics() {
 async function getSectors() {
   try {
     const sectors = await information.getSectors()
-    console.log(sectors)
+    return sectors
   }
   catch (err) {
     console.error({ "Error": err.message })
   }
 }
-
 //Set state upper case
 function upperCaseState(word) {
   if (word.split(' ').length > 1) {
@@ -120,12 +119,14 @@ function upperCaseState(word) {
   }
 }
 
-//getCategories()
-//getStates()
-//getCitiesInState('rio s')
-//getDealStages()
-//getDealStatuses()
-//getLeadOrigins()
-//getLossReasons()
-//getMetrics()
-//getSectors()
+module.exports = {
+  getCategories,
+  getStates,
+  getCitiesInState,
+  getDealStages,
+  getDealStatuses,
+  getLeadOrigins,
+  getLossReasons,
+  getMetrics,
+  getSectors
+}

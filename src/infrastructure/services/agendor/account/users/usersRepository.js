@@ -3,16 +3,29 @@
 const axios = require('axios')
 
 const User = require('./User')
-const user = new User(axios);
+const userClass = new User(axios);
 
 async function getUsers(id = '') {
   try {
-    const users = await user.getUsers(id)
+    const users = await userClass.getUsers(id)
     console.log(users)
+    return users
   }
   catch (err) {
     console.error({ Error: err.message })
   }
 }
 
-getUsers('me')
+async function updateUser(id, user) {
+  try {
+    const updatedUser = await userClass.updateUser(id, user)
+    return updatedUser
+  }
+  catch (err) {
+    console.error({ "Error": err.message })
+  }
+}
+//getUsers('me')
+updateUser('576723', { contact: { linkedIn: "in/bárbara-moreira-siqueira-07a26597/" } })
+
+module.exports = { getUsers, updateUser }

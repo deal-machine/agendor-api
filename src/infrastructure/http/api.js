@@ -7,6 +7,9 @@ const config = {
     Authorization: `Token ${token}`,
     'Content-Type': 'application/json',
   },
+  body: {
+    'active': true
+  }
 }
 
 module.exports = { url, config }
