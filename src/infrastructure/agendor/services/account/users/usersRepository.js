@@ -8,7 +8,6 @@ const userClass = new User(axios);
 async function getUsers(id = '') {
   try {
     const users = await userClass.getUsers(id)
-    console.log(users)
     return users
   }
   catch (err) {

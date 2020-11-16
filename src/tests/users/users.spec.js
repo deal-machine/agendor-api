@@ -1,6 +1,6 @@
 'use strict'
 
-const { getUsers } = require('../../infrastructure/services/agendor/account/users/usersRepository.js')
+const { getUsers } = require('../../infrastructure/agendor/services/account/users/usersRepository.js')
 
 describe('Test Users', () => {
 

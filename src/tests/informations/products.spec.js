@@ -1,6 +1,6 @@
 'use strict'
 
-const { getProducts, createProduct, deleteProduct } = require('../../infrastructure/services/agendor/informations/products/productsRepository.js')
+const { getProducts, createProduct, deleteProduct } = require('../../infrastructure/agendor/services/informations/products/productsRepository')
 
 describe('Test products', () => {
 

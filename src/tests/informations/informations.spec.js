@@ -9,7 +9,7 @@ const {
   getLeadOrigins,
   getLossReasons,
   getMetrics,
-  getSectors } = require('../../infrastructure/services/agendor/informations/informationsRepository.js')
+  getSectors } = require('../../infrastructure/agendor/services/informations/informationsRepository')
 
 describe("Get Informations", () => {
 

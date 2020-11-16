@@ -1,6 +1,6 @@
 'use strict'
 
-const { url, config } = require('../../../../http/api.js')
+const { url, config } = require('../../../http/api')
 
 module.exports = class Person {
   _httpClient
