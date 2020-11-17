@@ -4,7 +4,7 @@ const axios = require('axios')
 
 //const { name, internet, company } = require('faker')
 
-const People = require('./People')
+const People = require('../../../infrastructure/agendor/services/core/people/People')
 const peopleClass = new People(axios)
 
 async function getPeople(id = '') {

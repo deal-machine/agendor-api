@@ -2,8 +2,8 @@
 
 const axios = require('axios')
 
-const User = require('./User')
-const userClass = new User(axios);
+const User = require('../../infrastructure/agendor/services/account/users/User')
+const userClass = new User(axios)
 
 async function getUsers(id = '') {
   try {

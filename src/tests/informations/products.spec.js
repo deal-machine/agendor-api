@@ -1,14 +1,11 @@
 'use strict'
 
-const axios = require("axios")
-
-const Product = require('../../infrastructure/agendor/services/informations/products/Product')
-const product = new Product(axios)
+const { getProducts, createProduct, deleteProduct } = require('./productsService')
 
 describe('Test products', () => {
 
   it('should be able to get Products', async () => {
-    const products = await product.getProducts()
+    const products = await getProducts()
 
     expect(products).toHaveProperty('data')
     expect(products).toHaveProperty('meta')

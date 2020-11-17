@@ -2,7 +2,7 @@
 
 const axios = require('axios')
 
-const Product = require('./Product')
+const Product = require('../../infrastructure/agendor/services/informations/products/Product')
 const productClass = new Product(axios)
 
 async function getProducts() {

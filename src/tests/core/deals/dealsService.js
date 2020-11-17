@@ -4,12 +4,12 @@ const axios = require('axios')
 
 //const { name } = require('faker')
 
-const Deal = require('./Deal')
-const deals = new Deal(axios)
+const Deal = require('../../../infrastructure/agendor/services/core/deals/Deal')
+const dealClass = new Deal(axios)
 
 async function getDeals(id = '') {
   try {
-    const deal = await deals.getDeals(id)
+    const deal = await dealClass.getDeals(id)
     return deal
   }
   catch (err) {
@@ -19,7 +19,7 @@ async function getDeals(id = '') {
 
 async function getDealsOfPerson(person_id) {
   try {
-    const dealsPerson = await deals.getDealsOfPerson(person_id)
+    const dealsPerson = await dealClass.getDealsOfPerson(person_id)
     return dealsPerson
   }
   catch (err) {
@@ -29,7 +29,7 @@ async function getDealsOfPerson(person_id) {
 
 async function getDealsOfOrganization(organization_id) {
   try {
-    const dealsOrganization = await deals.getDealsOfOrganizations(organization_id)
+    const dealsOrganization = await dealClass.getDealsOfOrganizations(organization_id)
     return dealsOrganization
   }
   catch (err) {
@@ -39,7 +39,7 @@ async function getDealsOfOrganization(organization_id) {
 
 async function createDealForPerson(person_id, deal) {
   try {
-    const dealPerson = await deals.createDealForPerson(person_id, deal)
+    const dealPerson = await dealClass.createDealForPerson(person_id, deal)
     return dealPerson
   }
   catch (err) {
@@ -49,7 +49,7 @@ async function createDealForPerson(person_id, deal) {
 
 async function createDealForOrganization(organization_id, deal) {
   try {
-    const dealOrganization = await deals.createDealForOrganization(organization_id, deal)
+    const dealOrganization = await dealClass.createDealForOrganization(organization_id, deal)
     return dealOrganization
   }
   catch (err) {
@@ -59,7 +59,7 @@ async function createDealForOrganization(organization_id, deal) {
 
 async function updateDeal(id, deal) {
   try {
-    const updatedDeal = await deals.updateDeal(id, deal)
+    const updatedDeal = await dealClass.updateDeal(id, deal)
     return updatedDeal
   }
   catch (err) {
@@ -76,7 +76,7 @@ async function updateDealStatus(id, dealStatus) {
       throw new Error(`Status must be "ongoing" "won" "lost".`)
     }
 
-    const updatedStatus = await deals.updateDealStatus(id, dealStatus)
+    const updatedStatus = await dealClass.updateDealStatus(id, dealStatus)
     return updatedStatus
   }
   catch (err) {
@@ -86,7 +86,7 @@ async function updateDealStatus(id, dealStatus) {
 
 async function updateDealStage(id, dealStage) {
   try {
-    const updatedStage = await deals.updateDealStage(id, dealStage)
+    const updatedStage = await dealClass.updateDealStage(id, dealStage)
     return updatedStage
   }
   catch (err) {
@@ -97,7 +97,7 @@ async function updateDealStage(id, dealStage) {
 module.exports = {
   getDeals,
   getDealsOfPerson,
-  getDealsofOrganization,
+  getDealsOfOrganization,
   createDealForPerson,
   createDealForOrganization,
   updateDeal,

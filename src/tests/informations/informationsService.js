@@ -2,12 +2,12 @@
 
 const axios = require('axios')
 
-const Information = require('./Information')
-const information = new Information(axios)
+const Information = require('../../infrastructure/agendor/services/informations/Information')
+const informationClass = new Information(axios)
 
 async function getCategories() {
   try {
-    const categories = await information.getCategories()
+    const categories = await informationClass.getCategories()
     return categories
   }
   catch (err) {
@@ -17,7 +17,7 @@ async function getCategories() {
 
 async function getStates() {
   try {
-    const states = await information.getStates()
+    const states = await informationClass.getStates()
     return states
   }
   catch (err) {
@@ -40,7 +40,7 @@ async function getCitiesInState(state) {
       throw new Error(`${newState} not exists.`)
     }
     else {
-      const cities = await information.getCities(newState)
+      const cities = await informationClass.getCities(newState)
       return cities
     }
   }
@@ -51,7 +51,7 @@ async function getCitiesInState(state) {
 
 async function getDealStages() {
   try {
-    const stages = await information.getDealStages()
+    const stages = await informationClass.getDealStages()
     return stages
   }
   catch (err) {
@@ -61,7 +61,7 @@ async function getDealStages() {
 
 async function getDealStatuses() {
   try {
-    const statuses = await information.getDealStatuses()
+    const statuses = await informationClass.getDealStatuses()
     return statuses
   }
   catch (err) {
@@ -71,7 +71,7 @@ async function getDealStatuses() {
 
 async function getLeadOrigins() {
   try {
-    const leadOrigins = await information.getLeadOrigins()
+    const leadOrigins = await informationClass.getLeadOrigins()
     return leadOrigins
   }
   catch (err) {
@@ -81,7 +81,7 @@ async function getLeadOrigins() {
 
 async function getLossReasons() {
   try {
-    const lossReasons = await information.getLossReasons()
+    const lossReasons = await informationClass.getLossReasons()
     return lossReasons
   }
   catch (err) {
@@ -91,7 +91,7 @@ async function getLossReasons() {
 
 async function getMetrics() {
   try {
-    const metrics = await information.getMetrics()
+    const metrics = await informationClass.getMetrics()
     return metrics
   }
   catch (err) {
@@ -101,7 +101,7 @@ async function getMetrics() {
 
 async function getSectors() {
   try {
-    const sectors = await information.getSectors()
+    const sectors = await informationClass.getSectors()
     return sectors
   }
   catch (err) {

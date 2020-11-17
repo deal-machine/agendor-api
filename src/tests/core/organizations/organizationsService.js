@@ -4,8 +4,8 @@ const axios = require('axios');
 
 //const { name } = require('faker')
 
-const Organization = require('./Organization.js');
-const organizationClass = new Organization(axios);
+const Organization = require('../../../infrastructure/agendor/services/core/organizations/Organization')
+const organizationClass = new Organization(axios)
 
 async function getOrganizations(id = '') {
   try {
@@ -49,7 +49,7 @@ async function updateOrganization(id, organization) {
 
 async function deleteOrganization(id) {
   try {
-    const deletedOrganization = await organization.deleteOrganization(id)
+    const deletedOrganization = await organizationClass.deleteOrganization(id)
     return deletedOrganization
   }
   catch (err) {

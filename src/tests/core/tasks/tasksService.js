@@ -4,12 +4,12 @@ const axios = require('axios')
 
 //const { lorem } = require('faker')
 
-const Task = require('./Task')
-const task = new Task(axios)
+const Task = require('../../../infrastructure/agendor/services/core/tasks/Task')
+const taskClass = new Task(axios)
 
 async function getTasks() {
   try {
-    const tasks = await task.getTasks()
+    const tasks = await taskClass.getTasks()
     return tasks
   }
   catch (err) {
@@ -19,7 +19,7 @@ async function getTasks() {
 
 async function getTasksOfPerson(person_id) {
   try {
-    const tasksPerson = await task.getTasksOfPerson(person_id)
+    const tasksPerson = await taskClass.getTasksOfPerson(person_id)
     return tasksPerson
   }
   catch (err) {
@@ -27,9 +27,9 @@ async function getTasksOfPerson(person_id) {
   }
 }
 
-async function getTasksofOrganization(organization_id) {
+async function getTasksOfOrganization(organization_id) {
   try {
-    const tasksOrganization = await task.getTasksOfOrganization(organization_id)
+    const tasksOrganization = await taskClass.getTasksOfOrganization(organization_id)
     return tasksOrganization
   }
   catch (err) {
@@ -39,7 +39,7 @@ async function getTasksofOrganization(organization_id) {
 
 async function getTasksOfDeal(deal_id) {
   try {
-    const tasksDeal = await task.getTasksOfDeal(deal_id)
+    const tasksDeal = await taskClass.getTasksOfDeal(deal_id)
     return tasksDeal
   }
   catch (err) {
@@ -49,7 +49,7 @@ async function getTasksOfDeal(deal_id) {
 
 async function createTaskForPerson(person_id, text) {
   try {
-    const taskPerson = await task.createTaskForPerson(person_id, text)
+    const taskPerson = await taskClass.createTaskForPerson(person_id, text)
     taskPerson
   }
   catch (err) {
@@ -59,7 +59,7 @@ async function createTaskForPerson(person_id, text) {
 
 async function createTaskForOrganization(organization_id, text) {
   try {
-    const taskOrganization = await task.createTaskForOrganization(organization_id, text)
+    const taskOrganization = await taskClass.createTaskForOrganization(organization_id, text)
     return taskOrganization
   }
   catch (err) {
@@ -69,7 +69,7 @@ async function createTaskForOrganization(organization_id, text) {
 
 async function createTaskForDeal(deal_id, text) {
   try {
-    const taskDeal = await task.createTaskForDeal(deal_id, text)
+    const taskDeal = await taskClass.createTaskForDeal(deal_id, text)
     return taskDeal
   }
   catch (err) {
@@ -80,7 +80,7 @@ async function createTaskForDeal(deal_id, text) {
 module.exports = {
   getTasks,
   getTasksOfPerson,
-  getTasksofOrganization,
+  getTasksOfOrganization,
   getTasksOfDeal,
   createTaskForPerson,
   createTaskForOrganization,
